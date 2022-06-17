@@ -29,3 +29,6 @@ variable "tags" {
   default     = {}
   description = "Additional tags (e.g. `map('BusinessUnit','XYZ')`"
 }
+locals {
+  repository_name = "terraform-aws-chatbot-slack"
+}

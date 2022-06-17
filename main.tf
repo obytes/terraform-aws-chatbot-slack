@@ -1,5 +1,5 @@
 data "local_file" "cloudformation_template" {
-  filename = "${path.module}/cloudformation.yml"
+  filename = "${path.module}/cloudformation-chatbot.yml"
 }
 
 resource "aws_cloudformation_stack" "chatbot_slack_configuration" {
@@ -16,5 +16,5 @@ resource "aws_cloudformation_stack" "chatbot_slack_configuration" {
     SnsTopicArnsParameter      = join(",", var.sns_topic_arns)
   }
 
-  tags = var.tags
+  tags = merge(var.tags, {Repository = local.repository_name})
 }
